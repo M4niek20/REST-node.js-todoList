@@ -1,0 +1,37 @@
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    h1= message
+    - var i=0
+    table
+        thead
+            tr
+                td= 'Data'
+                td= 'Stan'
+                td= 'Zadanie'
+                td= ''
+        tbody
+            while task[i]
+                tr
+                    td= task[i].Created_date.getHours()+":"+task[i].Created_date.getMinutes()+" "+task[i].Created_date.getDate()+'.'+(task[i].Created_date.getMonth()+1)+'.'+task[i].Created_date.getFullYear()
+                    td= task[i].status
+                    td= task[i++].name
+                    td
+                        form(method='delete' action='?taskId=task[i]._id')
+                            input(type="submit" value='usuń')
+            form(method='post')
+                tr
+                    td= ''
+                    td= ''
+                    td
+                        input(type='text' name='name' placeholder='nowe zadanie')
+                    td
+                        input(type='submit' value='dodaj')
+            p=task
+
+
+
+    
+            
